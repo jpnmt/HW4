@@ -1,0 +1,15 @@
+div.header {
+    background-color: aquamarine;
+
+}
+
+div.continue p {
+    position: fixed;
+    top: 500px;
+    left: 500px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0px;
+}
