@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <title>userInfo</title>
 
-    <link href="../css/styles.css" rel="stylesheet" type="text/css">
-    <link href="../css/backgrounds.css" rel="stylesheet" type="text/css"/>
+    <link href="../../css/styles.css" rel="stylesheet" type="text/css">
+    <link href="../../css/backgrounds.css" rel="stylesheet" type="text/css"/>
 
 </head>
 <body>
 
+<div class = "reg">
+
 <form class="fields" id="myForm" method="post" novalidate
-      action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">>
+    <form action=http://localhost:63342/Main.java" onsubmit="submitForm(); return false;">
     <!-- all the fields that make up the form -->
     <table>
     <tr>
@@ -63,25 +65,28 @@
             </select>
         </div></td>
     </tr>
-    <tr>
-    <td>
+        <td>
+            <tr>
         <div id="endingDiv" class="form-group">
         <label for="ending-selection">How will this program end?</label>
 
         <input type="radio"
-               name="end" id="lastSquare" <?php if ($end=="last"){echo "checked";}?>
+               name="end" id="lastSquare"
                value="last"/> <label for="lastSquare">The last unpainted square is painted for the first time</label><br/>
 
         <input type="radio"
-               name="end" id="secondBlob" <?php if ($end=="second"){echo "checked";}?>
+               name="end" id="secondBlob"
                value="second"/> <label for="secondBlob">A square gets a second paint blob</label>
+            </tr>
         </div></td>
-    </tr>
+
 
     <tr>
         <td>
+
             <input type="submit" value="Submit Data" id="submitButton"
                    class="btn btn-primary"/>
+
         </td>
         <td>
             <input type="reset" value="Reset Data" class="btn btn-primary" />
@@ -92,5 +97,47 @@
 
 </form>
 
+</div>
+
+<a href="submitted.html">
+    <button>Continue</button>
+</a>
+<script>
+
+function submitForm() {
+
+var colorSel = document.getElementById("color-selection").value;
+var colorSel2 = document.getElementById("color-selection2").value;
+var colorSel3 = document.getElementById("color-selection3").value;
+
+    var formData = "color-selection=" + colorSel +
+        "&color-selection2=" + colorSel2 +
+        "&color-selection3=" + colorSel3 +
+        "&end=" + end;
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://localhost:63342/Main.java", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+            // Handle the response from the backend if needed
+            console.log(xhr.responseText);
+
+            window.location.href = 'submitted.html';
+        }
+    };
+
+    xhr.send(formData);
+}
+
+</script>
 </body>
+
+<footer>
+    <a href="instructions.html">
+        <button>Back</button>
+    </a>
+</footer>
+</html>
 </html>
