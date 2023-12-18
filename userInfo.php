@@ -13,7 +13,7 @@
 <div class = "reg">
 
 <form class="fields" id="myForm" method="post" novalidate
-    <form action=http://localhost:63342/Main.java" onsubmit="submitForm(); return false;">
+    <form action=http://localhost:63342/Main2.java" onsubmit="submitForm(); return false;">
     <!-- all the fields that make up the form -->
     <table>
     <tr>
@@ -68,8 +68,8 @@
         <td>
             <tr>
         <div id="endingDiv" class="form-group">
-        <label for="ending-selection">How will this program end?</label>
 
+    <p> How will the experiment end?</p>
         <input type="radio"
                name="end" id="lastSquare"
                value="last"/> <label for="lastSquare">The last unpainted square is painted for the first time</label><br/>
@@ -95,9 +95,10 @@
 
     </table>
 
+</div>
 </form>
 
-</div>
+
 
 <a href="submitted.html">
     <button>Continue</button>
@@ -109,6 +110,8 @@ function submitForm() {
 var colorSel = document.getElementById("color-selection").value;
 var colorSel2 = document.getElementById("color-selection2").value;
 var colorSel3 = document.getElementById("color-selection3").value;
+var end = document.querySelector('input[name="end"]:checked').value;
+
 
     var formData = "color-selection=" + colorSel +
         "&color-selection2=" + colorSel2 +
@@ -116,7 +119,7 @@ var colorSel3 = document.getElementById("color-selection3").value;
         "&end=" + end;
 
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://localhost:63342/Main.java", true);
+    xhr.open("POST", "http://localhost:63342/Main2.java", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
     xhr.onreadystatechange = function () {
